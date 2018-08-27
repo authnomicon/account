@@ -1,4 +1,4 @@
-exports = module.exports = function(otp) {
+exports = module.exports = function(otp, oob) {
   var path = require('path')
     , ejs = require('ejs')
     , dispatch = require('../../../../lib/dispatch');
@@ -15,6 +15,8 @@ exports = module.exports = function(otp) {
     switch (type) {
     case 'otp':
       return dispatch(otp)(null, req, res, next);
+    case 'oob':
+      return dispatch(oob)(null, req, res, next);
     case undefined:
       return next();
     default:
@@ -50,5 +52,6 @@ exports = module.exports = function(otp) {
 };
 
 exports['@require'] = [
-  './prompt/otp'
+  './prompt/otp',
+  './prompt/oob'
 ];
