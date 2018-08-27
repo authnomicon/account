@@ -1,5 +1,5 @@
 {
-  "name": "authnomicon-account",
+  "name": "@authnomicon/account",
   "version": "0.0.0",
   "description": "Account management components for the Authnomicon project.",
   "author": {
