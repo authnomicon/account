@@ -40,5 +40,5 @@ exports = module.exports = function(otp) {
 };
 
 exports['@require'] = [
-  'http://schemas.authnomicon.org/js/security/authentication/otp'
+  'http://schemas.authnomicon.org/js/cs/otp'
 ];
