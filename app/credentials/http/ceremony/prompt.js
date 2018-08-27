@@ -1,10 +1,29 @@
-exports = module.exports = function() {
+exports = module.exports = function(otp) {
   var path = require('path')
-    , ejs = require('ejs');
+    , ejs = require('ejs')
+    , dispatch = require('../../../../lib/dispatch');
   
+  
+  function initialize(req, res, next) {
+    res.locals.csrfToken = req.csrfToken();
+    next();
+  }
+  
+  function typed(req, res, next) {
+    var type = req.query.type;
+    
+    switch (type) {
+    case 'otp':
+      return dispatch(otp)(null, req, res, next);
+    case undefined:
+      return next();
+    default:
+      return next(new Error('Unsupported authenticator type: ' + type));
+    }
+  }
   
   function render(req, res, next) {
-    res.locals.csrfToken = req.csrfToken();
+    
     
     res.render('credentials/new', function(err, str) {
       if (err && err.view) {
@@ -24,8 +43,12 @@ exports = module.exports = function() {
   
 
   return [
+    initialize,
+    typed,
     render
   ];
 };
 
-exports['@require'] = [];
+exports['@require'] = [
+  './prompt/otp'
+];

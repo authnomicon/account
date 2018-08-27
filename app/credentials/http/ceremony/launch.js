@@ -4,6 +4,7 @@ exports = module.exports = function() {
     var options = req.locals || {};
     
     console.log('LAUNCH NEW CREDENTIAL!');
+    return res.redirect('/credentials/new');
   }
 
 
