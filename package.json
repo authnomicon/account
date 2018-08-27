@@ -1,0 +1,40 @@
+{
+  "name": "authnomicon-account",
+  "version": "0.0.0",
+  "description": "Account management components for the Authnomicon project.",
+  "author": {
+    "name": "Jared Hanson",
+    "email": "jaredhanson@gmail.com",
+    "url": "http://jaredhanson.net/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/authnomicon/account.git"
+  },
+  "bugs": {
+    "url": "http://github.com/authnomicon/account/issues"
+  },
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./app",
+  "assembly": {
+    "namespace": "org.authnomicon/account",
+    "components": [
+      "signup/http/service",
+      "signup/http/ceremony"
+    ]
+  },
+  "devDependencies": {
+    "make-node": "^0.3.0",
+    "mocha": "^5.2.0",
+    "chai": "^4.1.2"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha test/*.test.js"
+  }
+}
