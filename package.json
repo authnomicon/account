@@ -29,6 +29,10 @@
       "signup/http/ceremony"
     ]
   },
+  "dependencies": {
+    "ejs": "^2.5.8",
+    "express": "^4.15.3"
+  },
   "devDependencies": {
     "make-node": "^0.3.0",
     "mocha": "^5.2.0",
