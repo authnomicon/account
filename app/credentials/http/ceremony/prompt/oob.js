@@ -1,9 +1,32 @@
-exports = module.exports = function(otp) {
+exports = module.exports = function(oob) {
   var path = require('path')
     , ejs = require('ejs');
   
-  /*
   function generate(req, res, next) {
+    console.log('GENERATE OOB');
+    console.log(req.user);
+    console.log(req.session);
+    
+    
+    var channel = req.query.channel || 'auth0';
+    
+    oob.associate(channel, req.user, { channel: 'auth0' }, function(err, cred, ticket, params) {
+      console.log("OOB ASSOC");
+      console.log(err);
+      console.log(cred);
+      console.log(ticket);
+      console.log(params);
+      
+      if (err) { return next(err); }
+    
+      var qr = 'https://chart.googleapis.com/chart?chs=166x166&chld=L|0&cht=qr&chl=' + encodeURIComponent(params.barcodeURL);
+    
+      res.locals.barcodeURL = qr;
+      next();
+      
+    });
+    
+    /*
     var type = req.query.algorithm || 'totp';
   
     otp.generate(type, function(err, cred) {
@@ -14,8 +37,10 @@ exports = module.exports = function(otp) {
       res.locals.barcodeURL = qr;
       next();
     });
-  }
     */
+  }
+    
+  
   
   function render(req, res, next) {
     res.render('credentials/new/oob', function(err, str) {
@@ -35,11 +60,11 @@ exports = module.exports = function(otp) {
   
 
   return [
-    //generate,
+    generate,
     render
   ];
 };
 
 exports['@require'] = [
-  //'http://schemas.authnomicon.org/js/cs/otp'
+  'http://schemas.authnomicon.org/js/cs/oob'
 ];
