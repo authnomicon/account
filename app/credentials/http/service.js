@@ -7,8 +7,9 @@ exports = module.exports = function(newHandler) {
   return router;
 };
 
+// TODO: Move this to a myaccount package
 exports['@implements'] = [
-  'http://i.bixbyjs.org/http/Service',
+  'x-http://i.bixbyjs.org/http/Service',
   'http://schemas.authnomicon.org/js/account/credentials/HTTPService'
 ];
 exports['@path'] = '/credentials';
