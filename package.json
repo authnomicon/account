@@ -25,7 +25,8 @@
   "assembly": {
     "namespace": "org.authnomicon/account",
     "components": [
-      "signup/http/service"
+      "signup/http/service",
+      "select/http/service"
     ]
   },
   "dependencies": {
