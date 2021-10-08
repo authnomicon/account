@@ -4,6 +4,10 @@ exports = module.exports = function(parse, csrfProtection, authenticate, state, 
     console.log('select this account:');
     console.log(req.body);
     console.log(req.user);
+    
+    return;
+    
+    // WIP: add multi-account login support to passport and session manager
   }
   
   function redirect(req, res, next) {

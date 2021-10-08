@@ -3,9 +3,9 @@
 
 <form action="/account/select" method="post">
 <ul>
-<% accounts.forEach(function(account, i){ %>
+<% accounts.forEach(function(account){ %>
   <li>
-    <button name="s" value="<%= i %>"><%= account.displayName %></button>
+    <button name="session_selector" value="<%= account.sessionSelector %>"><%= account.displayName %></button>
   </li>
 <% }); %>
 </ul>

@@ -7,9 +7,19 @@ exports = module.exports = function(csrfProtection, authenticate, state, session
     console.log('PROMPT SELECT');
     console.log(req.user);
     
+    // TODO: Handle case if req.user is not array
+    
+    var accounts = []
+      , i;
+    for (i = 0; i < req.user.length; ++i) {
+      accounts.push(req.user[i]);
+      accounts[i].sessionSelector = req.authInfo[i].sessionSelector;
+    }
+    
+    
     
     res.locals.csrfToken = req.csrfToken();
-    res.locals.accounts = [ req.user ];
+    res.locals.accounts = accounts;
     
     res.render('account/select', function(err, str) {
       if (err && err.view) {
@@ -31,7 +41,7 @@ exports = module.exports = function(csrfProtection, authenticate, state, session
     session(),
     csrfProtection(),
     state(),
-    authenticate('session'),
+    authenticate('session', { multi: true }),
     prompt
   ];
 };
