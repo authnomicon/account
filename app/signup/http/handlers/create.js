@@ -1,34 +1,40 @@
-exports = module.exports = function(ds, parse, ceremony) {
+exports = module.exports = function(passwords, parse, csrfProtection, authenticate, state) {
   
-  
+  // TODO: Make this handle a realm parameter, to mirror HTTP Basic auth
   function register(req, res, next) {
-    console.log('REGISTER IT!');
-    console.log(req.body)
-    
     var user = {
       username: req.body.username,
-      password: req.body.password
-    }
-    var realm = req.body.realm;
+      displayName: req.body.name
+    };
     
-    ds.add(user, realm, function(err, user) {
-      console.log('ADDED!');
-      console.log(err);
-      console.log(user);
+    passwords.create(user, req.body.password, function(err, user) {
+      if (err) { return next(err); }
+      req.login(user, function(err) {
+        if (err) { return next(err); }
+        return res.resumeState(next);
+      });
     });
+  }
+  
+  function redirect(req, res, next) {
+    res.redirect('/');
   }
   
   
   return [
     parse('application/x-www-form-urlencoded'),
-    ceremony('signup',
-      register
-    )
+    csrfProtection(),
+    state(),
+    authenticate('anonymous'),
+    register,
+    redirect
   ];
 };
 
 exports['@require'] = [
-  'http://schemas.authnomicon.org/js/ds/realms',
+  'http://i.authnomicon.org/credentials/PasswordService',
   'http://i.bixbyjs.org/http/middleware/parse',
-  'http://i.bixbyjs.org/http/middleware/ceremony'
+  'http://i.bixbyjs.org/http/middleware/csrfProtection',
+  'http://i.bixbyjs.org/http/middleware/authenticate',
+  'http://i.bixbyjs.org/http/middleware/state'
 ];

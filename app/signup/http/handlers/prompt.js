@@ -3,7 +3,9 @@ exports = module.exports = function(csrfProtection, state) {
     , ejs = require('ejs');
 
 
-  function render(req, res, next) {
+  function prompt(req, res, next) {
+    res.locals.csrfToken = req.csrfToken();
+    
     res.render('account/signup', function(err, str) {
       if (err && err.view) {
         var view = path.resolve(__dirname, '../views/prompt.ejs');

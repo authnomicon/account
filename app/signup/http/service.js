@@ -9,7 +9,7 @@ exports = module.exports = function(promptHandler, createHandler) {
 };
 
 exports['@implements'] = 'http://i.bixbyjs.org/http/Service';
-exports['@path'] = '/account/create';
+exports['@path'] = '/signup';
 exports['@require'] = [
   './handlers/prompt',
   './handlers/create'
