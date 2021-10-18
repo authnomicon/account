@@ -14,9 +14,9 @@ describe('signup/http/service', function() {
   
   describe('create', function() {
     function promptHandler() {};
-    function registerHandler() {};
+    function createHandler() {};
     
-    var service = factory(promptHandler, registerHandler);
+    var service = factory(promptHandler, createHandler);
   
     it('should construct handler', function() {
       expect(service).to.be.a('function');
