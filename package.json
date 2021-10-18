@@ -1,18 +1,22 @@
 {
   "name": "@authnomicon/account",
   "version": "0.0.0",
-  "description": "Account management components for the Authnomicon project.",
+  "description": "Account selection components for the Authnomicon project.",
   "author": {
     "name": "Jared Hanson",
     "email": "jaredhanson@gmail.com",
-    "url": "http://jaredhanson.net/"
+    "url": "https://www.jaredhanson.me/"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/authnomicon/account.git"
   },
   "bugs": {
-    "url": "http://github.com/authnomicon/account/issues"
+    "url": "https://github.com/authnomicon/account/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/jaredhanson"
   },
   "license": "MIT",
   "licenses": [
