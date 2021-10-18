@@ -7,17 +7,9 @@ var factory = require('../../../app/signup/http/service');
 
 describe('signup/http/service', function() {
   
-  it('should export factory function', function() {
-    expect(factory).to.be.a('function');
-  });
-  
   it('should be annotated', function() {
-    expect(factory['@implements']).to.deep.equal([
-      'http://i.bixbyjs.org/http/Service',
-      'http://schemas.authnomicon.org/js/signup/HTTPService'
-    ]);
+    expect(factory['@implements']).to.equal('http://i.bixbyjs.org/http/Service');
     expect(factory['@path']).to.equal('/signup');
-    expect(factory['@singleton']).to.be.undefined;
   });
   
   describe('create', function() {

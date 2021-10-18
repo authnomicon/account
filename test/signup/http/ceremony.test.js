@@ -2,9 +2,10 @@
 
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var factory = require('../../../app/signup/http/ceremony');
+//var factory = require('../../../app/signup/http/ceremony');
 
 
+/*
 describe('signup/http/ceremony', function() {
   
   it('should export factory function', function() {
@@ -29,3 +30,4 @@ describe('signup/http/ceremony', function() {
   });
   
 });
+*/
