@@ -33,6 +33,9 @@
       "select/http/service"
     ]
   },
+  "directories": {
+    "com": "com"
+  },
   "dependencies": {
     "ejs": "^2.5.8",
     "express": "^4.15.3"
