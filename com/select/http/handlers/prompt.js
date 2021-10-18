@@ -4,9 +4,6 @@ exports = module.exports = function(csrfProtection, authenticate, state, session
 
 
   function prompt(req, res, next) {
-    console.log('PROMPT SELECT');
-    console.log(req.user);
-    
     // TODO: Handle case if req.user is not array
     
     var accounts = []
