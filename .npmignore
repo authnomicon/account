@@ -1,4 +1,5 @@
 Makefile
+CHANGELOG.md
 docs/
 examples/
 reports/
