@@ -13,8 +13,6 @@ exports = module.exports = function(csrfProtection, authenticate, state, session
       accounts[i].sessionSelector = req.authInfo[i].sessionSelector;
     }
     
-    
-    
     res.locals.csrfToken = req.csrfToken();
     res.locals.accounts = accounts;
     

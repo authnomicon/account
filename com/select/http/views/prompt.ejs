@@ -5,7 +5,7 @@
 <ul>
 <% accounts.forEach(function(account){ %>
   <li>
-    <button name="session_selector" value="<%= account.sessionSelector %>"><%= account.displayName %></button>
+    <button name="selected_session" value="<%= account.sessionSelector %>"><%= account.displayName %></button>
   </li>
 <% }); %>
 </ul>

@@ -1,12 +1,8 @@
 exports = module.exports = function(parse, csrfProtection, authenticate, state, session) {
   
   function select(req, res, next) {
-    var selector = req.body.session_selector;
-    
-    // TODO: Yield the selector forward.
-    return res.resumeState(next);
-    
-    // WIP: add multi-account login support to passport and session manager
+    var s = req.body.selected_session;
+    return res.resumeState({ selectedSession: s }, next);
   }
   
   function redirect(req, res, next) {
