@@ -4,13 +4,21 @@ exports = module.exports = function(csrfProtection, authenticate, state, session
 
 
   function prompt(req, res, next) {
-    // TODO: Handle case if req.user is not array
+    var users = req.user;
+    if (!Array.isArray(users)) {
+      users = [ users ];
+    }
+    var infos = req.authInfo;
+    if (!Array.isArray(infos)) {
+      infos = [ infos ];
+    }
     
     var accounts = []
       , i;
-    for (i = 0; i < req.user.length; ++i) {
-      accounts.push(req.user[i]);
-      accounts[i].sessionSelector = req.authInfo[i].sessionSelector;
+    for (i = 0; i < users.length; ++i) {
+      // TODO: Merge user into a new object, before assigning sessionSelector
+      accounts.push(users[i]);
+      accounts[i].sessionSelector = infos[i].sessionSelector;
     }
     
     res.locals.csrfToken = req.csrfToken();
