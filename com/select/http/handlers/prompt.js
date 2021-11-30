@@ -1,6 +1,7 @@
 exports = module.exports = function(csrfProtection, authenticate, state, session) {
   var path = require('path')
-    , ejs = require('ejs');
+    , ejs = require('ejs')
+    , merge = require('utils-merge');
 
 
   function prompt(req, res, next) {
@@ -16,8 +17,7 @@ exports = module.exports = function(csrfProtection, authenticate, state, session
     var accounts = []
       , i;
     for (i = 0; i < users.length; ++i) {
-      // TODO: Merge user into a new object, before assigning sessionSelector
-      accounts.push(users[i]);
+      accounts.push(merge({}, users[i]));
       accounts[i].sessionSelector = infos[i].sessionSelector;
     }
     
