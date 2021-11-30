@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed `session_selector` form field name to `selected_session`, as processed
 by `/account/select` endpoint.
 
+### Fixed
+- Fixed `/account/select` endpoint to handle case when only a single user is
+logged in.
 
 ## [0.0.1] - 2021-10-18
 
