@@ -11,7 +11,6 @@ describe('@authnomicon/account', function() {
     it('should have assembly metadata', function() {
       expect(json.assembly.namespace).to.equal('org.authnomicon/account');
       expect(json.assembly.components).to.deep.equal([
-        'select/http/service'
       ]);
     });
   });

@@ -29,7 +29,6 @@
   "assembly": {
     "namespace": "org.authnomicon/account",
     "components": [
-      "select/http/service"
     ]
   },
   "directories": {
